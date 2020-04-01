@@ -52,7 +52,7 @@ namespace UserRegistration
         //FUNCTION TO VALIDATE PASSWORD
         public static void validatePassword(string password) 
         {
-            Regex patternPassword = new Regex(@"\w{8,}");
+            Regex patternPassword = new Regex(@"(.*[A-Z])+(\w){7,}");
             if (patternPassword.IsMatch(password))
             {
                 Console.WriteLine("Password Is Valid");
