@@ -9,14 +9,17 @@ namespace UserRegistration
         {
             Console.WriteLine("Enter First Name");
             string firstName = Console.ReadLine();
-            Regex patternFirstName = new Regex(@"^[A-Z]{1}[a-z]{2,}$");
-            if (patternFirstName.IsMatch(firstName))
+            Console.WriteLine("Enter Last Name");
+            string lastName = Console.ReadLine();
+
+            Regex patternName = new Regex(@"^[A-Z]{1}[a-z]{2,}$");
+            if (patternName.IsMatch(firstName) && patternName.IsMatch(lastName))
             {
-                Console.WriteLine("First Name Is Valid ");
+                Console.WriteLine(" Name Is Valid ");
             }
             else
             {
-                Console.WriteLine("First Name Is Not Valid");
+                Console.WriteLine("Name Is Not Valid");
             }
         }
     }
