@@ -35,6 +35,20 @@ namespace UserRegistration
             }
         }
 
+        //FUNCTION TO VALIDATE MOBILE NUMBER
+        public static void validateMobileNumber(string mobileNumber)
+        {
+            Regex patternMobileNumber = new Regex(@"^([0-9]{2}[ ]{1}[0-9]{10})$");
+            if (patternMobileNumber.IsMatch(mobileNumber))
+            {
+                Console.WriteLine("Mobile Number is Valid");
+            }
+            else
+            {
+                Console.WriteLine("Mobile Number is Not Valid");
+            }
+        }
+
         static void Main(string[] args)
         {
             //TAKING INPUTS
@@ -44,10 +58,13 @@ namespace UserRegistration
             string lastName = Console.ReadLine();
             Console.WriteLine("Enter Email ID");
             string email = Console.ReadLine();
-            
+            Console.WriteLine("Enter Mobile Number");
+            string mobileNumber = Console.ReadLine();
+
             //VALIDATING FIRST NAME AND LAST NAME
             Program.validateName(firstName,lastName);
             Program.validateEmail(email);
+            Program.validateMobileNumber(mobileNumber);
         }
     }
 }
