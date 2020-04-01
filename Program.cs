@@ -49,6 +49,20 @@ namespace UserRegistration
             }
         }
 
+        //FUNCTION TO VALIDATE PASSWORD
+        public static void validatePassword(string password) 
+        {
+            Regex patternPassword = new Regex(@"\w{8,}");
+            if (patternPassword.IsMatch(password))
+            {
+                Console.WriteLine("Password Is Valid");
+            }
+            else
+            {
+                Console.WriteLine("Password Is Not Valid");
+            }
+        }
+
         static void Main(string[] args)
         {
             //TAKING INPUTS
@@ -60,11 +74,14 @@ namespace UserRegistration
             string email = Console.ReadLine();
             Console.WriteLine("Enter Mobile Number");
             string mobileNumber = Console.ReadLine();
+            Console.WriteLine("Enter The Password");
+            string password = Console.ReadLine();
 
-            //VALIDATING FIRST NAME AND LAST NAME
+            //VALIDATING INPUT DATA
             Program.validateName(firstName,lastName);
             Program.validateEmail(email);
             Program.validateMobileNumber(mobileNumber);
+            Program.validatePassword(password);
         }
     }
 }
