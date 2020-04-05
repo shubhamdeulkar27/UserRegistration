@@ -3,10 +3,15 @@ using System.Text.RegularExpressions;
 
 namespace UserRegistration
 {
-    class Program
+    class Program : IValidate
     {
-        //FUNCTION TO VALIDATE FIRST AND LAST NAME
-        public static void validateName(string firstName, string lastName)
+        /// <summary>
+        /// Function to validate first name and last name.
+        /// Takes two arguments first name and last name.
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        public void ValidateName(string firstName, string lastName)
         {
             Regex patternName = new Regex(@"^[A-Z]{1}[a-z]{2,}$");
             
@@ -20,10 +25,14 @@ namespace UserRegistration
             }
         }
 
-        //FUNCTION TO VALIDATE EMAIL
-        public static void validateEmail(string email)
+        /// <summary>
+        /// Function to validate email id.
+        /// Takes one argument email id.
+        /// </summary>
+        /// <param name="email"></param>
+        public void ValidateEmail(string email)
         {
-            Regex patternEmail = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
+            Regex patternEmail = new Regex(@"^abc((\.[A-Z]+[a-z]*[0-9]*)|(\.[A-Z]*[a-z]+[0-9]*)|(\.[A-Z]*[a-z]*[0-9]+)?)?@bl\.co(\.[a-z]{2,})?$");
 
             if (patternEmail.IsMatch(email))
             {
@@ -35,8 +44,12 @@ namespace UserRegistration
             }
         }
 
-        //FUNCTION TO VALIDATE MOBILE NUMBER
-        public static void validateMobileNumber(string mobileNumber)
+        /// <summary>
+        /// Function to validate mobile number.
+        /// Takes one argument mobile number.
+        /// </summary>
+        /// <param name="mobileNumber"></param>
+        public void ValidateMobileNumber(string mobileNumber)
         {
             Regex patternMobileNumber = new Regex(@"^([0-9]{2}[ ]{1}[0-9]{10})$");
             if (patternMobileNumber.IsMatch(mobileNumber))
@@ -49,8 +62,12 @@ namespace UserRegistration
             }
         }
 
-        //FUNCTION TO VALIDATE PASSWORD
-        public static void validatePassword(string password) 
+        /// <summary>
+        /// Function to validate password.
+        /// Takes one argument password.
+        /// </summary>
+        /// <param name="password"></param>
+        public void ValidatePassword(string password) 
         {
             Regex patternPassword = new Regex(@"^(?=.*[A-Z])(?=.*[0-9])(?=[^@#$%^&+=]*[@#$%^&+=][^@#$%^&+=]*$)(.{8,})$");
             if (patternPassword.IsMatch(password))
@@ -63,25 +80,32 @@ namespace UserRegistration
             }
         }
 
+        /// <summary>
+        /// Main function takes input and store it to User object.
+        /// Validate the data in User object.
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             //TAKING INPUTS
+            User user = new User();
             Console.WriteLine("Enter First Name");
-            string firstName = Console.ReadLine();
+            user.FirstName = Console.ReadLine();
             Console.WriteLine("Enter Last Name");
-            string lastName = Console.ReadLine();
+            user.LastName = Console.ReadLine();
             Console.WriteLine("Enter Email ID");
-            string email = Console.ReadLine();
+            user.Email = Console.ReadLine();
             Console.WriteLine("Enter Mobile Number");
-            string mobileNumber = Console.ReadLine();
+            user.MobileNumber = Console.ReadLine();
             Console.WriteLine("Enter The Password");
-            string password = Console.ReadLine();
+            user.Password = Console.ReadLine();
 
             //VALIDATING INPUT DATA
-            Program.validateName(firstName,lastName);
-            Program.validateEmail(email);
-            Program.validateMobileNumber(mobileNumber);
-            Program.validatePassword(password);
+            Program program = new Program();
+            program.ValidateName(user.FirstName,user.LastName);
+            program.ValidateEmail(user.Email);
+            program.ValidateMobileNumber(user.MobileNumber);
+            program.ValidatePassword(user.Password);
         }
     }
 }
