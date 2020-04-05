@@ -83,29 +83,37 @@ namespace UserRegistration
         /// <summary>
         /// Main function takes input and store it to User object.
         /// Validate the data in User object.
-        /// </summary>
+        /// </summary>w
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            //TAKING INPUTS
-            User user = new User();
-            Console.WriteLine("Enter First Name");
-            user.FirstName = Console.ReadLine();
-            Console.WriteLine("Enter Last Name");
-            user.LastName = Console.ReadLine();
-            Console.WriteLine("Enter Email ID");
-            user.Email = Console.ReadLine();
-            Console.WriteLine("Enter Mobile Number");
-            user.MobileNumber = Console.ReadLine();
-            Console.WriteLine("Enter The Password");
-            user.Password = Console.ReadLine();
+            try
+            {
+                //TAKING INPUTS
+                User user = new User();
+                Console.WriteLine("Enter First Name");
+                user.FirstName = Console.ReadLine();
+                Console.WriteLine("Enter Last Name");
+                user.LastName = Console.ReadLine();
+                Console.WriteLine("Enter Email ID");
+                user.Email = Console.ReadLine();
+                Console.WriteLine("Enter Mobile Number");
+                user.MobileNumber = Console.ReadLine();
+                Console.WriteLine("Enter The Password");
+                user.Password = Console.ReadLine();
 
-            //VALIDATING INPUT DATA
-            Program program = new Program();
-            program.ValidateName(user.FirstName,user.LastName);
-            program.ValidateEmail(user.Email);
-            program.ValidateMobileNumber(user.MobileNumber);
-            program.ValidatePassword(user.Password);
+                //VALIDATING INPUT DATA
+                Program program = new Program();
+                program.ValidateName(user.FirstName, user.LastName);
+                program.ValidateEmail(user.Email);
+                program.ValidateMobileNumber(user.MobileNumber);
+                program.ValidatePassword(user.Password);
+            }
+            catch (System.FormatException exception)
+            {
+                Console.WriteLine(exception.Message);
+            }
+
         }
     }
 }
